@@ -1,13 +1,19 @@
 package com.arckz.find_me.activity
 
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 import com.arckz.find_me.R
+import com.arckz.find_me.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initView() {
         setContentView(R.layout.activity_main)
     }
+
+    override fun initData() {
+    }
+
+    override fun initListener() {
+    }
+
+
 }

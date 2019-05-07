@@ -29,7 +29,7 @@ public class OkHttpUtil {
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .writeTimeout(20, TimeUnit.SECONDS)
                 .readTimeout(20, TimeUnit.SECONDS)
-                .cookieJar(new CookieJarImpl(new DBCookieStore(BaseApplication.Companion.getINSTANCE().getApplicationContext())))
+//                .cookieJar(new CookieJarImpl(new DBCookieStore(BaseApplication.Companion.getINSTANCE().getApplicationContext())))
                 .sslSocketFactory(SSLSocketClient.getSSLSocketFactory())//配置
                 .hostnameVerifier(SSLSocketClient.getHostnameVerifier())//配置
                 ;
