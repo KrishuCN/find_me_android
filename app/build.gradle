@@ -9,7 +9,7 @@ android {
         config {
             keyAlias 'findme'
             keyPassword '123456'
-            storeFile file('F:/find_me/find_me_android/app/findme.jks')
+            storeFile file('E:/Develope/workspeace/find_me/find_me_android/app/findme.jks')
             storePassword '123456'
         }
     }

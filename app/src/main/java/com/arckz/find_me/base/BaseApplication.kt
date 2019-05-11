@@ -25,8 +25,7 @@ class BaseApplication:Application() {
     override fun onCreate() {
         super.onCreate()
         INSTANCE = this
-        val crashHandler = CrashHandler.getInstance()
-        crashHandler.init(this)
+        CrashHandler.getInstance().init(this)
         OkHttpUtil.initOKGO(this)
         XGPushConfig.enableDebug(this,true)
         XGPushConfig.getToken(this)
