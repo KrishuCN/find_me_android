@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import com.arckz.find_me.bean.XGNotification
 import com.arckz.find_me.service.LocationReportService
+import com.arckz.find_me.util.NotificationDb
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.tencent.android.tpush.*
@@ -40,6 +41,7 @@ class MessageReceiver : XGPushBaseReceiver() {
         notific.activity = notifiShowedRlt.activity
         notific.update_time = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
             .format(Calendar.getInstance().time)
+        NotificationDb.getInstance(context).save(notific)
         show(context, "您有1条新消息, 通知被展示 ， $notifiShowedRlt")
         LogUtils.d("+++++++++++++++++++++++++++++展示通知的回调")
         //开始定位上传

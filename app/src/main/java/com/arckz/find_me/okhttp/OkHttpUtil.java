@@ -3,6 +3,7 @@ package com.arckz.find_me.okhttp;
 import android.app.Application;
 import android.content.Context;
 import com.arckz.find_me.base.BaseApplication;
+import com.arckz.find_me.util.Configs;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
@@ -16,6 +17,7 @@ import okhttp3.*;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -83,6 +85,17 @@ public class OkHttpUtil {
                 .method("GET", null)
                 .build();
         mOkHttpClient.newCall(request).enqueue(responseCallback);
+    }
+
+    /**
+     * 获取请求基本信息
+     * @return
+     */
+    public static Map<String,Object> getBaseData() {
+        Map<String,Object> mapData = new HashMap<>();
+        mapData.put("back","1");
+        mapData.put("token", Configs.CLIEN_TOKEN);
+        return mapData;
     }
 
 //    public static PostRequest post(String url){

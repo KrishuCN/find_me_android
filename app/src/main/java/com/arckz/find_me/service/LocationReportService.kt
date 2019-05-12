@@ -2,17 +2,24 @@ package com.arckz.find_me.service
 
 import android.util.Log
 import com.arckz.find_me.base.BaseApplication
+import com.arckz.find_me.okhttp.OkHttpUtil
+import com.arckz.find_me.util.CommonUtil
 import com.arckz.find_me.util.LocationUtils
+import com.arckz.find_me.util.Url
 import com.baidu.location.BDAbstractLocationListener
 import com.baidu.location.BDLocation
 import com.baidu.location.Poi
+import com.blankj.utilcode.util.LogUtils
+import com.lzy.okgo.OkGo
+import com.lzy.okgo.callback.StringCallback
+import com.lzy.okgo.model.Response
 
 /**
  * <pre>
  *
  *     author: Hy
  *     time  : 2019/05/07  下午 5:19
- *     desc  : 开启定位并上报服务器结果
+ *     desc  : 开启定位并向服务器上报结果
  *
  * </pre>
  */
@@ -124,6 +131,27 @@ class LocationReportService {
                         }
                     }
                     Log.d("MYTAG", sb.toString())
+
+                    val map = OkHttpUtil.getBaseData()
+                    map["lng"] = longitude
+                    map["lat"] = latitude
+//                    map["loc"] = "地点名字"
+                    map["con"] = addrStr
+
+                    //上传服务器
+                    OkGo.post<String>(Url.SERVER_INDEX)
+                        .upJson(CommonUtil.getJSONObject(map))
+                        .execute(object :StringCallback(){
+                            override fun onSuccess(response: Response<String>?) {
+                                //上传成功
+                                LogUtils.d("$time \n 上传位置信息成功")
+                            }
+
+                            override fun onError(response: Response<String>?) {
+                                super.onError(response)
+                                LogUtils.d("上传位置信息失败:\n $response")
+                            }
+                        })
 
                     //释放
                     locationUtils?.stop()

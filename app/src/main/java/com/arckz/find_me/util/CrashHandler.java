@@ -35,7 +35,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
     @SuppressLint("SimpleDateFormat")
 	private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
     
-    String path =  Configs.URL_FILE_LOG;
+    String path = Configs.INSTANCE.getURL_FILE_LOG();
 
     /** 保证只有一个CrashHandler实例 */
     private CrashHandler() {
