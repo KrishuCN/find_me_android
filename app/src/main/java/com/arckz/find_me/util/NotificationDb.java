@@ -91,8 +91,8 @@ public class NotificationDb {
      * @param msg_id 消息ID
      * @return
      */
-    public List<XGNotification> getAllNotifacationData(int currentPage, int lineSize,
-                                              String msg_id) {
+    public List<XGNotification> getNotifacationData(int currentPage, int lineSize,
+                                                    String msg_id) {
         String firstResult = String.valueOf((currentPage - 1) * lineSize);
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
         Cursor cursor = null;

@@ -144,7 +144,7 @@ class LocationReportService {
                         .execute(object :StringCallback(){
                             override fun onSuccess(response: Response<String>?) {
                                 //上传成功
-                                LogUtils.d("$time \n 上传位置信息成功")
+
                             }
 
                             override fun onError(response: Response<String>?) {

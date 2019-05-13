@@ -28,6 +28,7 @@ object Configs {
 
     /** 文件：用户信息  */
     var FILE_USER_INFO = "CP_USER.DAT"
-    //服务器做了标识判断
+    //服务器标识
     const val CLIEN_TOKEN = "mH3RBK5Yfu5GIrdHCsJCYOy9HF99opL4XgQwPGv0yHs4XOiHDVRQ5Ahl60EJjG9h"
+    const val PUSH_ALIAS = "214312239"
 }

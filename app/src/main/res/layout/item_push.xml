@@ -1,47 +1,55 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:paddingBottom="16dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
+                android:background="#F5F5F5"
                 android:paddingTop="16dp">
 
 	<TextView
 			android:id="@+id/push_msg_id"
+			android:text="1803294603"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignParentLeft="true"
 			android:layout_alignParentTop="true"
-			android:textColor="@android:color/darker_gray" />
+			android:textSize="16sp"
+			android:textColor="@android:color/black" />
 
 	<TextView
 			android:id="@+id/push_title"
+			android:text="标题"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignParentLeft="true"
 			android:layout_below="@id/push_msg_id"
 			android:layout_marginTop="5dp"
-			android:textColor="@android:color/darker_gray"
+			android:textColor="@android:color/black"
 			android:textSize="18sp" />
 
 	<TextView
 			android:id="@+id/push_time"
+			android:text="2019-5-12"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_alignBottom="@id/push_title"
 			android:layout_alignParentRight="true"
 			android:layout_below="@id/push_msg_id"
 			android:layout_marginTop="8dp"
-			android:textColor="@android:color/darker_gray" />
+			android:textSize="15sp"
+			android:textColor="@android:color/black" />
 
 	<TextView
 			android:id="@+id/push_content"
+			android:text="内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_below="@id/push_title"
 			android:layout_marginTop="5dp"
-			android:textColor="@android:color/darker_gray" />
+			android:textSize="18sp"
+			android:textColor="@android:color/black" />
 
 </RelativeLayout>

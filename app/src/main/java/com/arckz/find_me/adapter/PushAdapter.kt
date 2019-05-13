@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import com.arckz.find_me.R
 import com.arckz.find_me.bean.XGNotification
@@ -43,7 +42,7 @@ class PushAdapter(context: Context,list:List<XGNotification>) : RecyclerView.Ada
         p0.push_time.text = list?.get(p1)?.update_time
         p0.push_title.text = list?.get(p1)?.title
         p0.push_content.text = list?.get(p1)?.content
-        p0.push_msg_id.text = list?.get(p1)?.update_time
+        p0.push_msg_id.text = list?.get(p1)?.msg_id.toString()
     }
 
     class PushHolder(itemView: View?): RecyclerView.ViewHolder(itemView!!) {
