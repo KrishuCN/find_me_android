@@ -2,6 +2,7 @@ package com.arckz.find_me.base
 
 import android.app.Application
 import com.arckz.find_me.okhttp.OkHttpUtil
+import com.arckz.find_me.util.Configs
 import com.arckz.find_me.util.CrashHandler
 import com.arckz.find_me.util.LocationUtils
 import com.baidu.mapapi.SDKInitializer
@@ -36,14 +37,14 @@ class BaseApplication:Application() {
 
     private fun registerTXPush() {
 //        XGPushManager.registerPush(this)
-        XGPushManager.registerPush(this, object : XGIOperateCallback {
+        XGPushManager.registerPush(this,Configs.PUSH_ALIAS, object : XGIOperateCallback {
             override fun onSuccess(data: Any?, flag: Int) {
                 //token在设备卸载重装的时候有可能会变
-                LogUtils.d("TPush", "注册成功，设备token为：" + data);
+                LogUtils.d("TPush", "注册成功，设备token为：$data")
             }
 
             override fun onFail(data: Any?, errCode: Int, msg: String?) {
-                LogUtils.d("TPush", "注册失败，错误码：" + errCode + ",错误信息：" + msg);
+                LogUtils.d("TPush", "注册失败，错误码：$errCode,错误信息：$msg")
             }
         })
     }

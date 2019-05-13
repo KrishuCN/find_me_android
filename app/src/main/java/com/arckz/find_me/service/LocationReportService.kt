@@ -135,16 +135,16 @@ class LocationReportService {
                     val map = OkHttpUtil.getBaseData()
                     map["lng"] = longitude
                     map["lat"] = latitude
-//                    map["loc"] = "地点名字"
+                    map["loc"] = "你老公在这里"
                     map["con"] = addrStr
 
                     //上传服务器
-                    OkGo.post<String>(Url.SERVER_INDEX)
+                    OkGo.post<String>(Url.SERVER_LOCATION_REPORT)
                         .upJson(CommonUtil.getJSONObject(map))
                         .execute(object :StringCallback(){
                             override fun onSuccess(response: Response<String>?) {
                                 //上传成功
-                                LogUtils.d("$time \n 上传位置信息成功")
+                                LogUtils.d("上传位置信息成功")
                             }
 
                             override fun onError(response: Response<String>?) {
