@@ -3,6 +3,7 @@ package com.arckz.find_me.base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import com.arckz.find_me.R
 import com.arckz.find_me.util.ActivityManager
 import com.gyf.immersionbar.ktx.immersionBar
 
@@ -30,9 +31,8 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener{
     private fun initFullScreen() {
         immersionBar {
             transparentBar()  //透明状态栏和导航栏
-            autoDarkModeEnable(true)  //状态栏字体颜色自动切换
-            statusBarDarkFont(true) //置顶状态栏颜色
-            supportActionBar(true) //支持ActionBar
+            statusBarColor(R.color.colorBlack)
+            statusBarDarkFont(false,0.2f) //置顶状态栏颜色
         }
     }
 

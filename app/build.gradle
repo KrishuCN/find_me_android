@@ -9,7 +9,7 @@ android {
         config {
             keyAlias 'findme'
             keyPassword '123456'
-            storeFile file('/Volumes/HDD_DOCUMENT/WorkSpeace/findme/findme_android/find_me_android/app/findme.jks')
+            storeFile file('F:/find_me/find_me_android/app/findme.jks')
             storePassword '123456'
         }
     }
@@ -69,10 +69,13 @@ dependencies {
     implementation 'com.hjq:xxpermissions:5.5'
     implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta02'
     implementation 'com.gyf.immersionbar:immersionbar-ktx:3.0.0-beta02'
-    implementation 'com.tencent.xinge:xinge:3.2.7-Release'//信鸽
+    implementation 'com.tencent.xinge:xinge:3.2.7-Release'
+    //信鸽
     implementation 'com.tencent.jg:jg:1.1'
     implementation 'com.tencent.wup:wup:1.0.0.E-Release'
     implementation 'com.tencent.mid:mid:4.0.6-release'
     implementation 'com.android.support:recyclerview-v7:28.0.0'
     implementation 'com.github.jdsjlzx:LRecyclerView:1.5.4.3'
+    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'com.android.support:design:28.0.0'
 }
