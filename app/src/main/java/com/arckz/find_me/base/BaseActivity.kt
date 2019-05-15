@@ -21,7 +21,7 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ActivityManager.getInstance().addActivity(this)
-        actionBar?.hide()
+//        actionBar?.hide()
         initView()
         initFullScreen()
         initListener()

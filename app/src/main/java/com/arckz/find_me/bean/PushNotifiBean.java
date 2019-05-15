@@ -4,7 +4,7 @@ package com.arckz.find_me.bean;
  * Created by admin on 2017/2/13.
  */
 
-public class XGNotification {
+public class PushNotifiBean {
     private Integer id;
     private long msg_id;
     private String title;
@@ -71,11 +71,11 @@ public class XGNotification {
     }
 
 
-    public XGNotification() {
+    public PushNotifiBean() {
 
     }
 
-    public XGNotification(Integer id, Long msg_id, String title,
+    public PushNotifiBean(Integer id, Long msg_id, String title,
                           String content, String activity, int notificationActionType, String update_time) {
         super();
         this.id = id;

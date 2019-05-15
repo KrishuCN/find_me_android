@@ -7,4 +7,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!-- toolbar弹出菜单样式 -->
+    <style name="ToolbarPopupTheme" parent="@style/ThemeOverlay.AppCompat.Dark">
+        <item name="android:colorBackground">#000000</item>
+    </style>
+
 </resources>

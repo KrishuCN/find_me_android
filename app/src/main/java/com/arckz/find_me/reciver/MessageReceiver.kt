@@ -4,7 +4,8 @@ import android.app.NotificationManager
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
-import com.arckz.find_me.bean.XGNotification
+import com.arckz.find_me.`interface`.INotifacation
+import com.arckz.find_me.bean.PushNotifiBean
 import com.arckz.find_me.service.LocationReportService
 import com.arckz.find_me.util.NotificationDb
 import com.blankj.utilcode.util.LogUtils
@@ -18,6 +19,7 @@ import java.util.Calendar
 
 class MessageReceiver : XGPushBaseReceiver() {
 
+
     private fun show(context: Context?, text: String) {
         ToastUtils.showShort(text)
     }
@@ -30,7 +32,7 @@ class MessageReceiver : XGPushBaseReceiver() {
         if (context == null || notifiShowedRlt == null) {
             return
         }
-        val notific = XGNotification()
+        val notific = PushNotifiBean()
         notific.msg_id = notifiShowedRlt.msgId
         notific.title = notifiShowedRlt.title
         notific.content = notifiShowedRlt.content
@@ -42,8 +44,9 @@ class MessageReceiver : XGPushBaseReceiver() {
         notific.update_time = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
             .format(Calendar.getInstance().time)
         NotificationDb.getInstance(context).save(notific)
-        show(context, "您有1条新消息, 通知被展示 ， $notifiShowedRlt")
+        show(context, "通知被展示: $notifiShowedRlt")
         LogUtils.d("+++++++++++++++++++++++++++++展示通知的回调")
+        iNotification?.let { update(notific) }
         //开始定位上传
         LocationReportService().startLoc()
     }
@@ -189,7 +192,13 @@ class MessageReceiver : XGPushBaseReceiver() {
     }
 
     companion object {
-
         val LogTag = "TPushReceiver"
+        private var iNotification:INotifacation? = null
+        fun registUpdateReceiver(receiver:INotifacation){
+            iNotification = receiver
+        }
+        fun update(data:PushNotifiBean){
+            iNotification?.receivedMsg(data)
+        }
     }
 }

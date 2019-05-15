@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import com.arckz.find_me.bean.XGNotification;
+import com.arckz.find_me.bean.PushNotifiBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class NotificationDb {
         return instance;
     }
 
-    public void save(XGNotification notification) {
+    public void save(PushNotifiBean notification) {
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("msg_id", notification.getMsg_id());
@@ -47,7 +47,7 @@ public class NotificationDb {
         db.delete("notification", "", null);
     }
 
-    public void update(XGNotification notification) {
+    public void update(PushNotifiBean notification) {
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("msg_id", notification.getMsg_id());
@@ -60,7 +60,7 @@ public class NotificationDb {
                 .getId().toString()});
     }
 
-    public XGNotification find(Integer id) {
+    public PushNotifiBean find(Integer id) {
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
         Cursor cursor = db
                 .query("notification",
@@ -69,7 +69,7 @@ public class NotificationDb {
                         null, "1");
         try {
             if (cursor.moveToFirst()) {
-                return new XGNotification(cursor.getInt(cursor
+                return new PushNotifiBean(cursor.getInt(cursor
                         .getColumnIndex("id")), cursor.getLong(cursor
                         .getColumnIndex("msg_id")), cursor.getString(cursor
                         .getColumnIndex("title")), cursor.getString(cursor
@@ -91,7 +91,7 @@ public class NotificationDb {
      * @param msg_id 消息ID
      * @return
      */
-    public List<XGNotification> getNotifacationData(int currentPage, int lineSize,
+    public List<PushNotifiBean> getNotifacationData(int currentPage, int lineSize,
                                                     String msg_id) {
         String firstResult = String.valueOf((currentPage - 1) * lineSize);
         SQLiteDatabase db = dbOpenHelper.getReadableDatabase();
@@ -111,9 +111,9 @@ public class NotificationDb {
                                 null, null, "update_time DESC", firstResult
                                         + "," + lineSize);
             }
-            List<XGNotification> notifications = new ArrayList<XGNotification>();
+            List<PushNotifiBean> notifications = new ArrayList<PushNotifiBean>();
             while (cursor.moveToNext()) {
-                notifications.add(new XGNotification(cursor.getInt(cursor
+                notifications.add(new PushNotifiBean(cursor.getInt(cursor
                         .getColumnIndex("id")), cursor.getLong(cursor
                         .getColumnIndex("msg_id")), cursor.getString(cursor
                         .getColumnIndex("title")), cursor.getString(cursor

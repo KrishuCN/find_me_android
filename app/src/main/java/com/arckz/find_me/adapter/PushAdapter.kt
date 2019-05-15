@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.arckz.find_me.R
-import com.arckz.find_me.bean.XGNotification
+import com.arckz.find_me.bean.PushNotifiBean
 
 /**
  * <pre>
@@ -18,10 +18,10 @@ import com.arckz.find_me.bean.XGNotification
  *
  * </pre>
  */
-class PushAdapter(context: Context,list:List<XGNotification>) : RecyclerView.Adapter<PushAdapter.PushHolder>() {
+class PushAdapter(context: Context,list:List<PushNotifiBean>) : RecyclerView.Adapter<PushAdapter.PushHolder>() {
     var context: Context? = null
     var inflater:LayoutInflater? = null
-    var list:List<XGNotification>? =null
+    var list:List<PushNotifiBean>? =null
 
 
     init {
