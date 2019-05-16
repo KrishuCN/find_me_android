@@ -56,11 +56,10 @@ class MessageReceiver : XGPushBaseReceiver() {
         if (context == null) {
             return
         }
-        var text = ""
-        if (errorCode == XGPushBaseReceiver.SUCCESS) {
-            text = "反注册成功"
+        val text: String = if (errorCode == SUCCESS) {
+            "反注册成功"
         } else {
-            text = "反注册失败$errorCode"
+            "反注册失败$errorCode"
         }
         Log.d(LogTag, text)
         show(context, text)
@@ -72,11 +71,10 @@ class MessageReceiver : XGPushBaseReceiver() {
         if (context == null) {
             return
         }
-        var text = ""
-        if (errorCode == XGPushBaseReceiver.SUCCESS) {
-            text = "\"$tagName\"设置成功"
+        val text: String = if (errorCode == SUCCESS) {
+            "\"$tagName\"设置成功"
         } else {
-            text = "\"$tagName\"设置失败,错误码：$errorCode"
+            "\"$tagName\"设置失败,错误码：$errorCode"
         }
         Log.d(LogTag, text)
         show(context, text)
@@ -88,8 +86,8 @@ class MessageReceiver : XGPushBaseReceiver() {
         if (context == null) {
             return
         }
-        var text = ""
-        if (errorCode == XGPushBaseReceiver.SUCCESS) {
+        val text: String
+        if (errorCode == SUCCESS) {
             text = "\"$tagName\"删除成功"
         } else {
             text = "\"$tagName\"删除失败,错误码：$errorCode"
@@ -107,7 +105,7 @@ class MessageReceiver : XGPushBaseReceiver() {
         val notificationManager = context!!
             .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.cancelAll()
-        if (context == null || message == null) {
+        if (message == null) {
             return
         }
         var text = ""
@@ -154,8 +152,8 @@ class MessageReceiver : XGPushBaseReceiver() {
         if (context == null || message == null) {
             return
         }
-        var text = ""
-        if (errorCode == XGPushBaseReceiver.SUCCESS) {
+        val text: String
+        if (errorCode == SUCCESS) {
             text = message.toString() + "注册成功"
             // 在这里拿token
             val token = message.token
@@ -171,7 +169,7 @@ class MessageReceiver : XGPushBaseReceiver() {
         val text = "收到消息:$message"
         // 获取自定义key-value
         val customContent = message.customContent
-        if (customContent != null && customContent.length != 0) {
+        if (customContent != null && customContent.isNotEmpty()) {
             try {
                 val obj = JSONObject(customContent)
                 // key1为前台配置的key

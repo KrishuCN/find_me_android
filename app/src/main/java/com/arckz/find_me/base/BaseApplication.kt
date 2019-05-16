@@ -1,12 +1,21 @@
 package com.arckz.find_me.base
 
 import android.app.Application
+import android.content.Context
+import com.arckz.find_me.R
 import com.arckz.find_me.okhttp.OkHttpUtil
 import com.arckz.find_me.util.Configs
 import com.arckz.find_me.util.CrashHandler
 import com.arckz.find_me.util.LocationUtils
 import com.baidu.mapapi.SDKInitializer
+import com.blankj.utilcode.util.ColorUtils
 import com.blankj.utilcode.util.LogUtils
+import com.scwang.smartrefresh.header.FunGameHitBlockHeader
+import com.scwang.smartrefresh.layout.SmartRefreshLayout
+import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator
+import com.scwang.smartrefresh.layout.api.RefreshFooter
+import com.scwang.smartrefresh.layout.api.RefreshLayout
+import com.scwang.smartrefresh.layout.footer.ClassicsFooter
 import com.tencent.android.tpush.XGIOperateCallback
 import com.tencent.android.tpush.XGPushConfig
 import com.tencent.android.tpush.XGPushManager
@@ -31,6 +40,7 @@ class BaseApplication:Application() {
         XGPushConfig.enableDebug(this,true)
         XGPushConfig.getToken(this)
         registerTXPush()
+        setCommonRefreshHeaderAndFooter()
         locationUtils = LocationUtils(this)
         SDKInitializer.initialize(applicationContext)
     }
@@ -51,5 +61,18 @@ class BaseApplication:Application() {
 
     companion object{
         var INSTANCE:BaseApplication? = null
+        @JvmStatic
+        fun setCommonRefreshHeaderAndFooter(){
+            SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
+                layout.setPrimaryColors(ColorUtils.getColor(R.color.colorBlack)
+                    ,ColorUtils.getColor(R.color.colorWhite))
+                FunGameHitBlockHeader(context)
+            }
+            SmartRefreshLayout.setDefaultRefreshFooterCreator { context, layout ->
+                layout.setPrimaryColors(ColorUtils.getColor(R.color.colorBlack)
+                    ,ColorUtils.getColor(R.color.colorWhite))
+                ClassicsFooter(context)
+            }
+        }
     }
 }

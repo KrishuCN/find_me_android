@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context=".activity.MainActivity">
+	<item
+			android:id="@+id/action_clear"
+			app:showAsAction="ifRoom"
+			android:title="设置"
+			android:icon="@mipmap/menu_more_white"/>
+	<item
+			android:id="@+id/action_setting1"
+			app:showAsAction="ifRoom"
+			android:title="下一页"
+			android:icon="@mipmap/menu_more_white"/>
+	<item
+			android:id="@+id/action_settin2"
+			app:showAsAction="ifRoom"
+			android:title="清除通知"
+			android:icon="@mipmap/menu_more_white"/>
+	<item
+			android:id="@+id/action_setting"
+			app:showAsAction="ifRoom"
+			android:title="清除记录"
+			android:icon="@mipmap/menu_more_white"/>
+</menu>
