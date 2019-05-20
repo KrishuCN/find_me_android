@@ -15,6 +15,7 @@ import com.arckz.find_me.adapter.PushAdapter
 import com.arckz.find_me.base.BaseActivity
 import com.arckz.find_me.bean.PushNotifiBean
 import com.arckz.find_me.reciver.MessageReceiver
+import com.arckz.find_me.util.AlertUtil
 import com.arckz.find_me.util.CommonUtil
 import com.arckz.find_me.util.NotificationDb
 import com.blankj.utilcode.util.ColorUtils
@@ -45,7 +46,7 @@ class MainActivity : BaseActivity(),INotifacation,Toolbar.OnMenuItemClickListene
         toolbar.setNavigationIcon(R.mipmap.menu_left_white)
         toolbar.inflateMenu(R.menu.toolbar_menu)
         toolbar.setOnMenuItemClickListener(this)
-        toolbar.setNavigationOnClickListener { ToastUtils.showShort("❤") }
+        toolbar.setNavigationOnClickListener { txt_yan.text = yanArray!![Random.nextInt(yanArray!!.size)] }
         collapsing_toolbar.setCollapsedTitleTextColor(ColorUtils.getColor(R.color.colorPurple))
         collapsing_toolbar.setExpandedTitleColor(ColorUtils.getColor(R.color.colorAccent))
         collapsing_toolbar.collapsedTitleGravity = Gravity.CENTER
@@ -85,6 +86,16 @@ class MainActivity : BaseActivity(),INotifacation,Toolbar.OnMenuItemClickListene
             val popupMenu = CommonUtil.getPopupMenu(this,toolbar_menu_baseline,R.menu.menu_item)
                popupMenu?.setOnMenuItemClickListener {
                    ToastUtils.showShort(it.title)
+                   when(it.title){
+                       "清除全部记录" -> {
+                           AlertUtil.AlertDialog(this,"确定要清空全部数据？") { _, _ ->
+                               NotificationDb.getInstance(this).deleteAll()
+                               dataList?.clear()
+                               collapsing_toolbar.title = "0 条"
+                               pushAdapter?.notifyDataSetChanged()
+                           }
+                       }
+                   }
                    false
                }
                popupMenu?.setOnDismissListener {
@@ -98,8 +109,7 @@ class MainActivity : BaseActivity(),INotifacation,Toolbar.OnMenuItemClickListene
     override fun onClick(v: View?) {
         super.onClick(v)
         when(v?.id){
-            R.id.toolbar ->{
-            }
+            R.id.toolbar ->{}
         }
     }
 

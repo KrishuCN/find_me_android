@@ -19,7 +19,7 @@ import com.lzy.okgo.model.Response
  *
  *     author: Hy
  *     time  : 2019/05/07  下午 5:19
- *     desc  : 开启定位并向服务器上报结果
+ *     desc  : Start locate and report the result
  *
  * </pre>
  */

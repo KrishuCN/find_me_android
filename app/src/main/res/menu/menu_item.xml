@@ -21,6 +21,11 @@
 	<item
 			android:id="@+id/action_setting"
 			app:showAsAction="ifRoom"
-			android:title="清除记录"
+			android:title="清除全部记录"
+			android:icon="@mipmap/menu_more_white"/>
+	<item
+			android:id="@+id/action_id"
+			app:showAsAction="ifRoom"
+			android:title="114.115.232.199:8080/lily"
 			android:icon="@mipmap/menu_more_white"/>
 </menu>

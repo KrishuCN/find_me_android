@@ -31,4 +31,9 @@ object Configs {
     //服务器标识
     const val CLIEN_TOKEN = "mH3RBK5Yfu5GIrdHCsJCYOy9HF99opL4XgQwPGv0yHs4XOiHDVRQ5Ahl60EJjG9h"
     const val PUSH_ALIAS = "214312239"
+
+    //通知
+    const val ANDROID_CHANNEL_ID = "com.kris.find"
+    const val ANDROID_CHANNEL_NAME = "FIND_ME"
+    const val ANDROID_NOTIFICATION_ID = 0x110
 }

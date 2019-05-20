@@ -9,8 +9,11 @@ import android.content.ContextWrapper
 import android.graphics.Color
 import android.os.Build
 import android.support.annotation.RequiresApi
+import android.support.v4.app.NotificationCompat
+import com.arckz.find_me.R
+import com.arckz.find_me.util.Configs.ANDROID_CHANNEL_ID
+import com.arckz.find_me.util.Configs.ANDROID_CHANNEL_NAME
 
-@RequiresApi(Build.VERSION_CODES.O)
 class NotificationUtils(base: Context) : ContextWrapper(base) {
 
     private var mManager: NotificationManager? = null
@@ -24,29 +27,34 @@ class NotificationUtils(base: Context) : ContextWrapper(base) {
         }
 
     init {
-        createChannels()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) createChannels()
     }
 
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun createChannels() {
+    private fun createChannels() {
 
         // create android channel
         val androidChannel = NotificationChannel(
             ANDROID_CHANNEL_ID,
-            ANDROID_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT
+            ANDROID_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH
         )
-        // Sets whether notifications posted to this channel should display notification lights
         androidChannel.enableLights(true)
-        // Sets whether notification posted to this channel should vibrate.
         androidChannel.enableVibration(true)
-        // Sets the notification light color for notifications posted to this channel
         androidChannel.lightColor = Color.GREEN
-        // Sets whether notifications posted to this channel appear on the lockscreen or not
         androidChannel.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
 
         manager!!.createNotificationChannel(androidChannel)
+    }
 
+    fun createChannelsLowVersion():Notification{
+        return NotificationCompat.Builder(baseContext,ANDROID_CHANNEL_ID)
+            .setContentTitle("FindMe")
+            .setContentText("XGPushService is running..")
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setAutoCancel(false)
+            .setOngoing(true)
+            .build()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -58,8 +66,17 @@ class NotificationUtils(base: Context) : ContextWrapper(base) {
             .setAutoCancel(true)
     }
 
-    companion object {
-        const val ANDROID_CHANNEL_ID = "com.arckz.findme"
-        const val ANDROID_CHANNEL_NAME = "ANDROID CHANNEL"
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getForgroundChannelNotification(title: String, body: String):Notification.Builder{
+        return Notification.Builder(applicationContext, ANDROID_CHANNEL_ID)
+            .setContentTitle(title)
+            .setContentText(body)
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setAutoCancel(false)
+            .setOngoing(true)
+    }
+
+    fun cancle(channelID:Int){
+        manager?.cancel(channelID)
     }
 }

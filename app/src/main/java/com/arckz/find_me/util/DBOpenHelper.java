@@ -8,7 +8,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
 
     public DBOpenHelper(Context context) {
 
-        super(context, "XGExample.db", null, 1);
+        super(context, "XGPush.db", null, 1);
     }
 
     @Override

@@ -24,6 +24,7 @@
 					android:background="@color/colorBlack"
 					app:expandedTitleMarginEnd="10dp"
 					app:expandedTitleMarginStart="10dp"
+					android:fitsSystemWindows="true"
 					app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Title"
 					app:layout_scrollFlags="scroll|exitUntilCollapsed">
 				<RelativeLayout
